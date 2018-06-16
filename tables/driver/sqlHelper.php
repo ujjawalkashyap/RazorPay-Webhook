@@ -20,9 +20,9 @@ class sqlHelper{
   }
 
   public static function insertData($query){
-    mysqli_query(connect::$conn, $query);
-    // if(mysqli_affected_row()<=0)
-    // handleSqlError();
+    $result = mysqli_query(connect::$conn, $query);
+    //TODO 1: check and return true and false!
+    ($result) ? TRUE :FALSE;
   }
 
 }

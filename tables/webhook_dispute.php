@@ -12,8 +12,8 @@
     public $table = 'webhook_dispute';
 
     protected function make_payload($payload){
-
       $disputeData = $payload["payload"]["dispute"]["entity"];
+
       $newPayload = [];
       foreach ($this->insertables as $value)
         if(isset($disputeData[$value])){
