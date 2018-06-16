@@ -1,6 +1,6 @@
-# Project Title
+# RazorPay Webhook Manager
 
-One Paragraph of project description goes here
+Razor Pay Webhook Manager is small package to control and save Webhook responses send after a transaction takes place on a RazorPay Payment gateway.
 
 ## Getting Started
 
