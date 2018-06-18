@@ -8,33 +8,100 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
+create a Razorpay account
+Use your app key and app secret from Razorpay dashboard
+or create one if you don't have any to create the checkout forms   
+use the above mentioned steps
+or follow the Detailed steps are given in the Razorpay documentation for creating the checkout form https://docs.razorpay.com/docs/getting-started
+here is the link to the documentation for installing the razorpay
+https://github.com/razorpay/razorpay-php
 ```
-Give examples
+use composer by writing the command composer require razorpay/razorpay:2.*  
 ```
+* or else go to https://github.com/razorpay/razorpay-php/releases download the razorpay-php.zip file and include Razorpay.php into your application and you will be able to use the razorpay api for creating the payment checkout form
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+Steps:
+* Download the repository
+* Go to Razorpay Dashboard->Settings->Webhooks,
+* Setup the webhook url for your razorpay payment and check the Active box and the Active
+  Events corresponding to the events for which you want to receive the notification.
+* In case of this repository for each razorpay payment a json response is received at router.php.
+* Now whenever you make a payment using the razorpay payment gateway a http post request is receive
+  at the webhook url that is set in the dashboard.
+
+For sample webhooks payload you can refer to https://razorpay.com/docs/webhooks/webhook-payloads/
+
+
+Example:
+```
+Webhook Url: https://router.php
+```
+* In this Example you will recieve a json response payload whenever you make a razorpay payment at
+  the mentioned webhook url.
+* Various http post response payloads are handled respectively using their respective file in the
+  tables directory
+* And it has a directory named driver which has a file named sqlHelper.php which takes care of
+  sql query and insertion of data into their respective table
+* settings directory contains all the utility files for fetching the response payload
+  in payloadProcessor.php,
+* sql directory contains a file Webhook.sql which contains the database required to store the
+  respective payload response received for different events from the razorpay payment
+
+* Making connection to the database using connect.php,
+in case of insertion error saveWebhookData.php is used to store the response data as a text file inside a folder named dataAsTextFile
 
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+### Sample Json for Payment Authorised
+{
+  "event": "payment.authorized",
+  "entity": "event",
+  "contains": [
+    "payment"
+  ],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_6X6jcHoHdRdy79",
+        "entity": "payment",
+        "amount": 50000,
+        "currency": "INR",
+        "status": "authorized",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "method": "card",
+        "order_id": "order_6X4mcHoSXRdy79",
+        "card_id": "card_6GfX4mcIAdsfDQ",
+        "bank": null,
+        "captured": true,
+        "email": "gaurav.kumar@example.com",
+        "contact": "9123456780",
+        "description": "Payment Description",
+        "error_code": null,
+        "error_description": null,
+        "fee": 200,
+        "service_tax": 10,
+        "international": false,
+        "notes": {
+          "reference_no": "848493"
+        },
+        "vpa": null,
+        "wallet": null
+      }
+    },
+    "created_at": 1400826760
+  }
+}
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Make a Razorpay payment using the gateway and you can see the data will get inserted into the database
 
 ### Break down into end to end tests
 
