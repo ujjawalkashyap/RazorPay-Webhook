@@ -10,9 +10,7 @@
 
         public static function connectDb(){
           self::$conn = mysqli_connect(self::$host, self::$user, self::$pass, self::$db);
-                    if(self::$conn->connect_errno) {
-                        return $conn->connect_errno;
-                    }
+              if(!self::$conn) die();
         }
       }
       connect::connectDb();
