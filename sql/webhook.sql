@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2018 at 06:33 PM
+-- Generation Time: Jun 18, 2018 at 03:49 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -141,7 +141,7 @@ CREATE TABLE `webhook_payment` (
 
 CREATE TABLE `webhook_primary` (
   `webhook_id` bigint(20) NOT NULL,
-  `event` enum('payment.authorized','payment.failed','payment.captured') NOT NULL DEFAULT 'payment.captured',
+  `event` enum('payment.authorized','payment.failed','payment.captured','payment.dispute.created','order.paid','invoice.paid','invoice.expired','settlement.processed','subscription.charged') NOT NULL DEFAULT 'payment.captured',
   `full_data` text,
   `created_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -234,7 +234,7 @@ ALTER TABLE `webhook_subscription`
 -- AUTO_INCREMENT for table `webhook_dispute`
 --
 ALTER TABLE `webhook_dispute`
-  MODIFY `webhook_dispute_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `webhook_dispute_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `webhook_invoice`
@@ -252,19 +252,19 @@ ALTER TABLE `webhook_order`
 -- AUTO_INCREMENT for table `webhook_payment`
 --
 ALTER TABLE `webhook_payment`
-  MODIFY `webhook_payment_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `webhook_payment_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `webhook_primary`
 --
 ALTER TABLE `webhook_primary`
-  MODIFY `webhook_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `webhook_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `webhook_subscription`
 --
 ALTER TABLE `webhook_subscription`
-  MODIFY `webhook_subscription_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `webhook_subscription_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

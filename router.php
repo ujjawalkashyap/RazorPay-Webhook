@@ -4,6 +4,10 @@
   date_default_timezone_set('Asia/Calcutta');
   require_once("./settings/allfiles.php");
 
-  if((new payloadManager())->manage()) http_response_code(ACCEPTED);
+  if((new payloadManager())->manage()){
+    http_response_code(ACCEPTED);
+    echo"commiting";
+    connect::$conn->commit();
+  }
   else{saveWebhookData::save();}
  ?>
