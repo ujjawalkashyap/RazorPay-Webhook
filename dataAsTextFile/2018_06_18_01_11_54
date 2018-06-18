@@ -1,0 +1,72 @@
+
+  "entity": "event",
+  "account_id": "acc_8hwNFMv21T9nQa",
+  "event": "subscription.charged",
+  "contains": ["subscription", "payment"],
+  "payload": {
+    "subscription": {
+      "entity": {
+      
+        "entity": "subscription",
+        "plan_id": "plan_9Y8NDP057sq5b1",
+        "customer_id": "cust_9WfpcOkyPzub0L",
+        "status": "active",
+        "current_start": 1517895195,
+        "current_end": 1525545000,
+        "ended_at": null,
+        "quantity": 1,
+        "notes": [],
+        "charge_at": 1525545000,
+        "start_at": 1517895195,
+        "end_at": 1541442600,
+        "auth_attempts": 0,
+        "total_count": 4,
+        "paid_count": 1,
+        "customer_notify": false,
+        "created_at": 1517895187
+      }
+    },
+    "payment": {
+      "entity": {
+        "id": "pay_9YTNKSVmLS8uAq",
+        "entity": "payment",
+        "amount": 30000,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_9YTNCv2ONTsBcJ",
+        "invoice_id": "inv_9YTNCs15NFi8xm",
+        "international": false,
+        "method": "card",
+        "amount_refunded": 0,
+        "refund_status": null,
+        "captured": true,
+        "description": "Your family doctor",
+        "card_id": "card_9YTNLbCisI3wAb",
+        "card": {
+          "id": "card_9YTNLbCisI3wAb",
+          "entity": "card",
+          "name": "shahnawaz bag",
+          "last4": "5558",
+          "network": "MasterCard",
+          "type": "credit",
+          "issuer": "KARB",
+          "international": false,
+          "emi": false
+        },
+        "bank": null,
+        "wallet": null,
+        "vpa": null,
+        "email": "gaurav.kumar@example.com",
+        "contact": "9123456780",
+        "customer_id": "cust_9WfpcOkyPzub0L",
+        "notes": [],
+        "fee": 870,
+        "tax": 0,
+        "error_code": null,
+        "error_description": null,
+        "created_at": 1517895195
+      }
+    }
+  },
+  "created_at": 1517895204
+}

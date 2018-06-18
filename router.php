@@ -1,8 +1,9 @@
 <?php
 
+  const ACCEPTED = 202;
   date_default_timezone_set('Asia/Calcutta');
   require_once("./settings/allfiles.php");
 
-  (new payloadManager())->manage();
-
+  if((new payloadManager())->manage()) http_response_code(ACCEPTED);
+  else{saveWebhookData::save();}
  ?>

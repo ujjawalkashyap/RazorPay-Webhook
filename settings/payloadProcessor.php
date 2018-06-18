@@ -7,6 +7,7 @@
     public static function getpayload($as = "JSON"){
       if($as === "JSON"){
         $payload = file_get_contents("php://input");
+      
         if(self::isJSON($payload))
           self::$payload = json_decode($payload, TRUE);
       }

@@ -20,9 +20,7 @@ class sqlHelper{
   }
 
   public static function insertData($query){
-    $result = mysqli_query(connect::$conn, $query);
-    //TODO 1: check and return true and false!
-    ($result) ? TRUE :FALSE;
+    return (mysqli_query(connect::$conn, $query)) ? TRUE :FALSE;
   }
 
 }
