@@ -28,7 +28,9 @@
     }
 
     public function insert($payload){
+    
       $payload = self::make_payload($payload);
+
       $query = sqlHelper::insertQueryMaker($this->table, $payload, $this->insertables);
       return sqlHelper::insertData($query);
     }

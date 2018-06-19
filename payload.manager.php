@@ -7,23 +7,19 @@
 
       $data;
       $insertStatus =TRUE ;
-
       $insert_webhook_primary = (new webhook_primary())->insert(payload::$payload);
 
       if($insert_webhook_primary){
           $data = array_merge(['webhook_id' => connect::$conn->insert_id], payload::$payload);
-
       }else {return FALSE;}
 
       if(isset($data['contains']) && in_array('payment', $data['contains'])){
         $insert_webhook_payment = (new webhook_payment())->insert($data);
-
         if(!$insert_webhook_payment) return FALSE;
       }
 
       if(isset($data['contains']) && in_array('subscription', $data['contains'])){
         $insert_webhook_subscription = (new webhook_subscription())->insert($data);
-
         if(!$insert_webhook_subscription) return FALSE;
       }
 

@@ -6,8 +6,7 @@
 
   if((new payloadManager())->manage()){
     http_response_code(ACCEPTED);
-    echo"commiting";
     connect::$conn->commit();
   }
-  else{saveWebhookData::save();}
+  else saveWebhookData::save();
  ?>

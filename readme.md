@@ -55,7 +55,7 @@ Webhook Url: https://router.php
 in case of insertion error saveWebhookData.php is used to store the response data as a text file inside a folder named dataAsTextFile
 
 ```
-### Sample Json for Payment Authorised
+Sample Json for Payment Authorised
 {
   "event": "payment.authorized",
   "entity": "event",
@@ -102,6 +102,9 @@ End with an example of getting some data out of the system or using it for a lit
 ## Running the tests
 
 Make a Razorpay payment using the gateway and you can see the data will get inserted into the database
+* Whenever a successful updation into the database takes place then response status code of
+  202 ACCEPTED is received.
+* else a response status code of 406 NOT ACCEPTABLE is received and the data is saved in a .txt file.
 
 ### Break down into end to end tests
 
